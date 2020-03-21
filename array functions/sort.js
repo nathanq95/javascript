@@ -21,10 +21,11 @@ function sort(inputArray) {
                 swapped = true;     //swapped is set to true if any swaps were made while iterating through the array
 
             }
-            if(!swapped){   //if no swaps were made during the iteration of the array, then the array must be sorted
-                sorted = true;
-            }
 
+        }
+
+        if(!swapped){   //if no swaps were made during the iteration of the array, then the array must be sorted
+            sorted = true;
         }
         
         swapped = false;    
