@@ -21,35 +21,23 @@ var cardData = [{
   }];
 
   function detectNetwork(cardNumber, cardData) {
-    let cardString = cardNumber.toString();         //converts cardNumber into a string
+    let cardStr = cardNumber.toString();            //converts cardNumber into a string
 
-    for(let i = 0; i < cardData.length; i++){       //iterates through the cardData array
+    for(let i = 0; i < cardData.length; i++){       //iterates through cardData array
 
-        for(let j = 0; j < cardData[i].prefixes.length; j++){   //iterates through the cardData prefix property
 
-            if(cardData[i].prefixes[j] == cardString.substring(0,2)){   //compares the first two digits of cardNumber to the 
-                                                                        //current element in the prefix property
+            if(cardData[i].lengths.indexOf(cardStr.length) != -1){  //checks if the length of cardStr is contained in 
+                                                                    //cardData[i]'s lengths property
 
-                for(let k = 0; k < cardData[i].lengths.length; k++){    //iterates through the length property
-
-                    if(cardData[i].lengths[k] == cardString.length){    //checks if cardNumber's length is valid
-                        return cardData[i].network;
-                    }
-                }   
-
+                if(cardData[i].prefixes.indexOf(cardStr.substring(0,2)) != -1){ //checks if cardData[i]'s prefixes                                            
+                    return cardData[i].network;                                 //contains the first two digits of cardStr
+                }
+                if(cardData[i].prefixes.indexOf(cardStr.substring(0,1)) != -1){
+                    return cardData[i].network;
+                }
             }
-            else if(cardData[i].prefixes[j] == cardString.substring(0,1)){
-
-                for(let k = 0; k < cardData[i].lengths.length; k++){
-                    if(cardData[i].lengths[k] == cardString.length){
-                        return cardData[i].network;
-                    }
-                } 
-
-            }
-        }
+        
     }
-
-    return 'undefined';     
+    
+    return 'undefined';
 }
-
