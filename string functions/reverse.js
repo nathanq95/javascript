@@ -1,13 +1,15 @@
 // Write a function which returns a string in reverse.
 
 function reverseString(string) {
-    let result = '';
+let result = '';
+let splitString = string.split('');
 
-    for(let i = string.length - 1; i >=0; i--){
-        result += string[i];
-    }
+for(let cursor = string.length-1; cursor >= 0; cursor--){
+    result += splitString[cursor];
+}
 
-    return result;
-  }
+return result;
+}
   
   console.log(reverseString("abc"));
+
